@@ -1,12 +1,12 @@
 # Endpoint API
 PHP based endpoint API for database communication
 
-### Uses
+### Requirements
+* <a href="https://getcomposer.org/">Composer - PHP Package Manager</a>
+
+### Core Components
 * Bramus Router
 * ADOdb Abstraction Layer
 
 ## Before running application
-### Composer
-* Install Composer if you don't already have it installed.
-* navigate to /api folder.
-* run "composer install" to install dependencies.
+* run "composer install" from the project's root directory to install dependencies.
