@@ -1,6 +1,6 @@
 <?php 
 
-    require __DIR__ . '/../vendor/autoload.php';
+    require __DIR__ . '/vendor/autoload.php';
     require __DIR__ . '/response.php';
 
     // Connect to a database using ADOdb
