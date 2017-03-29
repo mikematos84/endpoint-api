@@ -2,7 +2,7 @@
 PHP based endpoint API for database communication
 
 ### Requirements
-* <a href="https://getcomposer.org/">Composer - PHP Package Manager</a>
+* <a href="https://getcomposer.org/" target="_blank">Composer - PHP Package Manager</a>
 
 ### Core Components
 * Bramus Router
