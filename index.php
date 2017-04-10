@@ -2,6 +2,7 @@
 
     require __DIR__ . '/vendor/autoload.php';
     require __DIR__ . '/response.php';
+    require __DIR__ . '/token.php';
 
     // Connect to a database using ADOdb
     $db = ADONewConnection('mysqli');
@@ -22,6 +23,16 @@
     foreach($files as $file){
         require_once 'routes/' . $file;
     }
+
+    function getPostData(){
+         parse_str(file_get_contents('php://input'), $output);
+         return $output;
+    }
+
+    $router->before('GET|POST|PUT|DELETE', '/.*', function(){
+       //$headers = getallheaders();
+       //Response::send($headers);
+    });
 
     // Run it!
     $router->run();
