@@ -6,7 +6,8 @@
 
     // Connect to a database using ADOdb
     $db = ADONewConnection('mysqli');
-    $db->Connect('localhost','root','','sandbox');
+    // $db->Connect('localhost','root','','sandbox');
+    $db->Connect('localhost','root','soccer84','sandbox');
     $db->SetFetchMode(ADODB_FETCH_ASSOC);
     
     // Create Router instance
@@ -30,8 +31,8 @@
     }
 
     $router->before('GET|POST|PUT|DELETE', '/.*', function(){
-       //$headers = getallheaders();
-       //Response::send($headers);
+    //    $headers = getallheaders();
+    //    Response::send($headers);
     });
 
     // Run it!
