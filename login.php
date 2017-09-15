@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <title>Test</title>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -23,19 +22,13 @@
     <span id="jwt-decoded" style="width: 500px; word-wrap: break-word; display: inline-block; text-align: top;"></span>
 </p>
 
+<script src="scripts/jwtutils.js"></script>
 <script>
 (function($){
 
-    function parseJwt (token) {
-        if(token == null || token == 'null' || !token || token == false){ return false; }
-        var base64Url = token.split('.')[1];
-        var base64 = base64Url.replace('-', '+').replace('_', '/');
-        return JSON.parse(window.atob(base64));
-    }
-
     function update(token){
         $('#jwt').text(token);
-        $('#jwt-decoded').html(JSON.stringify(parseJwt(token)));
+        $('#jwt-decoded').html(JSON.stringify(JWT.parse(token)));
     }
 
     var headers = {}
@@ -57,10 +50,10 @@
     $('#login').click(function(evt){
         $.ajax({
             type: 'post',
-            url: 'http://localhost/endpoint-api/auth',
+            url: 'http://api.localhost/auth',
             headers: headers,
             data: {
-                email: 'mikematos84@gmail.com',
+                login_id: 'mikematos84@gmail.com',
                 password: 'open(this)'
             },
             success: function(data){
@@ -84,7 +77,7 @@
     $('#getUsers').click(function(evt){
         $.ajax({
             type: 'get',
-            url: 'http://localhost/endpoint-api/users',
+            url: 'http://api.localhost/users',
             headers: headers,
             success: function(data){
                 console.log(data);

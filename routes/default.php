@@ -8,8 +8,8 @@ $router->post('/auth', function(){
     $req = getPostData();
     
     global $db;
-    $stmt = $db->prepare('SELECT * FROM users WHERE email=? AND password=?');
-    $row = $db->getRow($stmt, [$req['email'], $req['password']]);
+    $stmt = $db->prepare('SELECT * FROM users WHERE login_id=? AND password=?');
+    $row = $db->getRow($stmt, [$req['login_id'], $req['password']]);
     if($row){
         $token = Token::create([
             'uid' => $row['id']
