@@ -22,7 +22,7 @@
     <span id="jwt-decoded" style="width: 500px; word-wrap: break-word; display: inline-block; text-align: top;"></span>
 </p>
 
-<script src="scripts/jwtutils.js"></script>
+<script src="/scripts/jwtutils.js"></script>
 <script>
 (function($){
 
@@ -53,8 +53,8 @@
             url: 'http://api.localhost/auth',
             headers: headers,
             data: {
-                login_id: 'mikematos84@gmail.com',
-                password: 'open(this)'
+                login_id: 'user@domain.com',
+                password: 'password123'
             },
             success: function(data){
                 localStorage.setItem('token', data.token);
