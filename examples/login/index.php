@@ -50,7 +50,7 @@
     $('#login').click(function(evt){
         $.ajax({
             type: 'post',
-            url: 'http://api.localhost/auth',
+            url: 'https://api.localhost/login',
             headers: headers,
             data: {
                 login_id: 'user@domain.com',
