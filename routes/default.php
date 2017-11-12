@@ -4,9 +4,25 @@ $router->get('/', function () {
     echo '<h1>bramus/router</h1><p>Try these routes:<p><ul><li>/hello/<em>name</em></li><li>/blog</li><li>/blog/<em>year</em></li><li>/blog/<em>year</em>/<em>month</em></li><li>/blog/<em>year</em>/<em>month</em>/<em>day</em></li><li>/movies</li><li>/movies/<em>id</em></li></ul>';
 });
 
-$router->post('/auth', function(){
+$router->post('/login', function(){
     $req = getPostData();
-    
+
+    $missing = false;
+    if(array_key_exists('login_id', $req) === false){
+        $resp['error'][] = 'Missing login id';
+        $missing = true;
+    }
+
+    if(array_key_exists('password', $req) === false){
+        $resp['error'][] = 'Missing password';
+        $missing = true;
+    }
+
+    if($missing == true){
+        Response::json($resp, 401);
+        return;
+    }
+
     global $db;
     $stmt = $db->prepare('SELECT * FROM users WHERE login_id=? AND password=?');
     $row = $db->getRow($stmt, [$req['login_id'], $req['password']]);
